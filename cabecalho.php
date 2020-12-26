@@ -58,8 +58,7 @@ $total_item = $valor * $quantidade;
 $res = @$pdo->query("SELECT * FROM usuarios where id = '$_SESSION[id_usuario]'"); 
 $dados = $res->fetchAll(PDO::FETCH_ASSOC);
 $nome_usu = @$dados[0]['nome'];
-$email_usu = @$dados[0]['email'];
-$cpf_usu = @$dados[0]['cpf'];
+
 ?>
 
 <!DOCTYPE html>
@@ -121,7 +120,7 @@ $cpf_usu = @$dados[0]['cpf'];
                  ?>
                 <a href="sistema"><i class="fa fa-user"></i> Login</a>
             <?php } else { ?>
-                <a href="sistema/painel-cliente text-capitalize"><i class="fa fa-user"></i>Olá, <?php echo @$nome_usu ?></a>
+                <a href="sistema/painel-cliente text-capitalize"><i class="fa fa-user"></i>Olá, <?php echo @$nome_usu?></a>
             <?php } ?>
             </div>
         </div>
