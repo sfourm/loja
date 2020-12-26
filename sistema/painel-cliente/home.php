@@ -1,5 +1,4 @@
 <?php 
-
 $id_usuario = $_SESSION['id_usuario'];
 $cpf_usuario = $_SESSION['cpf_usuario'];
 
@@ -24,13 +23,9 @@ $pedidosPendentes = count($dados_total);
 $res_todos = $pdo->query("SELECT * FROM vendas where id_usuario = '$id_usuario' and status = 'Enviado'");
 $dados_total = $res_todos->fetchAll(PDO::FETCH_ASSOC);
 $aguardando = count($dados_total);
-
- ?>
-
-
+?>
 
 <div class="row">
-
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
@@ -102,42 +97,34 @@ $aguardando = count($dados_total);
 
 
 <?php 
-
 $res_todos = $pdo->query("SELECT * FROM clientes where cpf = '$cpf_usuario'");
 $dados_total = $res_todos->fetchAll(PDO::FETCH_ASSOC);
 $cartoes_cliente = $dados_total[0]['cartoes'];
-
-
- ?>
+?>
 
 <h5 class="mt-3">Cartões Fidelidade</h5>
-<p class="text-muted"><small>Ao completar <?php echo $total_cartoes_troca ?> cartões você ganhará um cupom de desconto de R$ <?php echo $valor_cupom_cartao ?>,00 reais! 
-<?php if($cartoes_cliente == 0){
-	echo 'Você não efetuou nenhuma compra ainda, faça a sua primeira compra e ganhe seu primeiro cartão!';
-}else{
-	echo 'Você possui '.$cartoes_cliente.' Cartões!';
-} ?>
-</small></p>
-
-
-
-
+<p class="text-muted">
+    <small>Ao completar <?php echo $total_cartoes_troca ?> cartões você ganhará um cupom de desconto de R$ <?php echo $valor_cupom_cartao ?>,00 reais! 
+        <?php if($cartoes_cliente == 0){
+            echo 'Você não efetuou nenhuma compra ainda, faça a sua primeira compra e ganhe seu primeiro cartão!';
+        }else{
+            echo 'Você possui '.$cartoes_cliente.' Cartões!';
+        } ?>
+    </small>
+</p>
 
 <div class="row">
-<?php 
-for ($i=1; $i <= $total_cartoes_troca; $i++) { 
-	if($i <= $cartoes_cliente){
-		$img = 'logo-maior.png';
-	}else{
-		$img = 'logo-inativa.png';
-	}
- ?>
+    <?php 
+    for ($i=1; $i <= $total_cartoes_troca; $i++) { 
+        if($i <= $cartoes_cliente){
+            $img = 'logo-maior.png';
+        }else{
+            $img = 'logo-inativa.png';
+        }
+    ?>
 
- 	  <div class="col-md-2 ml-2 " align="center">
+    <div class="col-md-2 ml-2 text-center">
         <img src="../../img/<?php echo $img ?>" width="180">
-      </div>
-
- <?php } ?>
-
- </div>
-
+    </div>
+    <?php } ?>
+</div>

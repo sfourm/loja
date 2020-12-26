@@ -1,9 +1,7 @@
 <?php
-
 require_once("../../../conexao.php"); 
 
 $id = $_POST['id'];
-
 $pdo->query("DELETE from vendas WHERE id = '$id'");
 
 //excluir os produtos da venda
@@ -18,7 +16,5 @@ $pdo->query("DELETE from carrinho WHERE id_venda = '$id'");
 
 }
 
-
 echo 'Excluído com Sucesso!!';
-
 ?>

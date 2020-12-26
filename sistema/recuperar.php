@@ -1,6 +1,4 @@
 <?php
-
-
 require_once("../conexao.php");
 
 $email = $_POST['email-recuperar'];

@@ -159,6 +159,11 @@ ol {
 }
 
 /* buttons */
+button:hover, :focus {
+	border: none; 
+	-webkit-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5); 
+	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);
+}
 
 .primary-btn {
 	display: inline-block;
@@ -166,15 +171,21 @@ ol {
 	padding: 10px 28px 10px;
 	color: #ffffff;
 	text-transform: uppercase;
-	font-weight: 700;
+	font-weight: 600;
 	background: #a00000;
 	letter-spacing: 2px;
+}
+
+.primary-btn:hover, :focus {
+	border: none; 
+	-webkit-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5); 
+	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);
 }
 
 .site-btn {
 	font-size: 14px;
 	color: #ffffff;
-	font-weight: 800;
+	font-weight: 600;
 	text-transform: uppercase;
 	display: inline-block;
 	padding: 13px 30px 12px;
@@ -478,7 +489,7 @@ ol {
 }
 
 .header__menu ul li a {
-	font-size: 14px;
+	font-size: .95rem;
 	color: #252525;
 	text-transform: uppercase;
 	font-weight: 700;
@@ -549,7 +560,7 @@ ol {
 
 .header__cart .header__cart__price span {
 	color: #252525;
-	font-weight: 700;
+	font-weight: 600;
 }
 
 .humberger__menu__wrapper {
@@ -2768,9 +2779,14 @@ ol {
 	color: #a00000;
 }
 
+body > section.contact.spad.bg-light > div > div > div:nth-child(2) > div > span > a {
+	font-size: 36px;
+	color: #a00000;
+}
+
 .contact__widget h4 {
 	color: #1c1c1c;
-	font-weight: 700;
+	font-weight: 600;
 	margin-bottom: 6px;
 	margin-top: 18px;
 }
@@ -2862,7 +2878,8 @@ ol {
 
 .contact__form__title h2 {
 	color: #1c1c1c;
-	font-weight: 700;
+	font-weight: 600;
+	text-transform: uppercase;
 }
 
 .contact-form {

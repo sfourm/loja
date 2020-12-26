@@ -34,14 +34,12 @@ echo 'Enviado com Sucesso!';
 $res = $pdo->query("SELECT * FROM emails where email = '$_POST[email]'"); 
 $dados = $res->fetchAll(PDO::FETCH_ASSOC);
 if(@count($dados) == 0){
-	$res = $pdo->prepare("INSERT into emails (nome, email, ativo) values (:nome, :email, :ativo)");
+	$res = $pdo->prepare("INSERT into emails (nome, sobrenome, email, ativo) values (:nome, :sobrenome, :email, :ativo)");
 	$res->bindValue(":nome", $_POST['nome']);
+	$res->bindValue(":sobrenome", $_POST['sobrenomem']);
 	$res->bindValue(":email", $_POST['email']);
 	$res->bindValue(":ativo", "Sim");
 	$res->execute();
 }
-
-
-
 
  ?>

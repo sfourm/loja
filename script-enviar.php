@@ -21,32 +21,21 @@ $res = $query->fetchAll(PDO::FETCH_ASSOC);
 
 	if ($final == 0){
 		echo 'Não tem mais emails pendentes, todos já foram enviados!';
-	}else{
+	} else {
 
-		if($agora >= $data){
-
-
+		if ($agora >= $data){
 			//VER SE JÁ PASSOU TODA A LISTA DE EMAILS
-
-
-			if($final >= $total_emails){
+			if ($final >= $total_emails){
 				$query = $pdo->query("UPDATE envios_email SET data = '$agora', final = '0', assunto = '$assunto', mensagem = '$mensagem', link = '$link' where id = 1");
-				
 				exit();
 			}
 			
-
-			
 			$inicio = $final;
 			$final_novo = $enviar_total_emails + $final;
-
-
-				//APÓS ENVIAR O EMAIL É PRECISO SALVAR A HORA NA TABELA DE ENVIOS
+			//APÓS ENVIAR O EMAIL É PRECISO SALVAR A HORA NA TABELA DE ENVIOS
 			$nova_hora = date('Y-m-d H:i:s', strtotime('+'.$intervalo_envio_email.'minute', strtotime($agora)));
-
 			$query = $pdo->query("UPDATE envios_email SET data = '$nova_hora', final = '$final_novo', assunto = '$assunto', mensagem = '$mensagem', link = '$link' where id = 1");
 
-			
 			$url_s = $url_loja;
 			$url_nova = $url_loja . $link;
 			$url_descadastrar = $url_loja . 'descadastrar.php';
@@ -60,7 +49,6 @@ $res = $query->fetchAll(PDO::FETCH_ASSOC);
 
 			}
 			
-
 			$nome_cliente_email = $res_emails[$i]['nome'];
 			$cliente_email = $res_emails[$i]['email'];
 			$id_email = $res_emails[$i]['id'];
@@ -68,7 +56,6 @@ $res = $query->fetchAll(PDO::FETCH_ASSOC);
 			$to = $cliente_email;
 			$subject = "$assunto";
 			$message = "
-
 				Olá $nome_cliente_email, <br><br>
 				$mensagem !
 
@@ -80,36 +67,24 @@ $res = $query->fetchAll(PDO::FETCH_ASSOC);
 				WhatsApp -> <a href='http://api.whatsapp.com/send?1=pt_BR&phone=$whatsapp_link' alt='$whatsapp' target='_blank'><i class='fab fa-whatsapp'></i>$whatsapp</a>
 
 				<br><br><br>
-       <i> Caso não queira mais receber nossos emails <a href='$url_descadastrar' target='_blank'> clique aqui </a> para se descadastrar!</i> <br><br>
-
-				";
-
+       			<i> Caso não queira mais receber nossos emails <a href='$url_descadastrar' target='_blank'> clique aqui </a> para se descadastrar!</i> <br><br>";
 
 				$dest = $email_adm;
 				$headers = 'MIME-Version: 1.0' . "\r\n";
 				$headers .= 'Content-type: text/html; charset=utf-8;' . "\r\n";
 
-				if($to != $dest){
+				if ($to != $dest){
 					$headers .= "From: " .$dest;
 				}
 
 				mail($to, $subject, $message, $headers);
-				
-
 			}
-
-
-	//ENVIAR EMAIL PARA O ADMIM INFORMANDO SOBRE O ULTIMO ENVIO DE EMAIL
-	$destinatario = $email_adm;
-	$assunto = "Disparo Email Inicio $inicio e Final $final_novo ";
-    $mensagem = utf8_decode($mensagem);
-    $cabecalhos = "From: ".$email_adm;
-    @mail($destinatario, $assunto, $mensagem, $cabecalhos);
-
-			
+			//ENVIAR EMAIL PARA O ADMIM INFORMANDO SOBRE O ULTIMO ENVIO DE EMAIL
+			$destinatario = $email_adm;
+			$assunto = "Disparo Email Inicio $inicio e Final $final_novo ";
+			$mensagem = utf8_decode($mensagem);
+			$cabecalhos = "From: ".$email_adm;
+			@mail($destinatario, $assunto, $mensagem, $cabecalhos);	
 		}
-		
 	} 
-
-
 ?>

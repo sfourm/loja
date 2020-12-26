@@ -6,7 +6,6 @@
     require_once("cabecalho-busca.php");
 ?>
 
-   
     <!-- Contact Section Begin -->
     <section class="contact spad bg-light">
         <div class="container">
@@ -21,7 +20,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                     <div class="contact__widget">
                         <span class="icon_whatsapp">
-                            <a target="_blank" href="http://api.whatsapp.com/send?1=pt_BR&phone=<?php echo $whatsapp_link ?>" title="<?php echo $whatsapp ?>"><i class="fa fa-whatsapp "></i></a>
+                            <a  target="_blank" href="http://api.whatsapp.com/send?1=pt_BR&phone=<?php echo $whatsapp_link ?>" title="<?php echo $whatsapp ?>"><i class="fa fa-whatsapp "></i></a>
                         </span>
                         <h4>Whatsapp</h4>
                         <p><?php echo $whatsapp ?></p>
@@ -46,7 +45,6 @@
     </section>
     <!-- Contact Section End -->
 
-  
     <!-- Contact Form Begin -->
     <div class="contact-form spad bg-light">
         <div class="container">
@@ -84,7 +82,6 @@
     require_once("rodape.php");
 ?>
 
-
 <script type="text/javascript">
     $('#btn-enviar-email').click(function(event){
         event.preventDefault();
@@ -107,30 +104,29 @@
                     $('#telefone').val('');
                     $('#mensagem').val('');
 
-                 }else if(msg.trim() === 'Preecha o Campo Nome'){
-                    
-                    $('#div-mensagem').addClass('text-danger')
-                    $('#div-mensagem').text(msg);
-                 
+                }else if(msg.trim() === 'Preecha o Campo Nome'){
+                
+                $('#div-mensagem').addClass('text-danger')
+                $('#div-mensagem').text(msg);
+                
 
-                 }else if(msg.trim() === 'Preecha o Campo Mensagem'){
-                    
-                    $('#div-mensagem').addClass('text-danger')
-                    $('#div-mensagem').text(msg);
-                 
+                }else if(msg.trim() === 'Preecha o Campo Mensagem'){
+                
+                $('#div-mensagem').addClass('text-danger')
+                $('#div-mensagem').text(msg);
+                
 
-                 }else if(msg.trim() === 'Preecha o Campo Email'){
-                    
-                    $('#div-mensagem').addClass('text-danger')
-                    $('#div-mensagem').text(msg);
-                 }
+                }else if(msg.trim() === 'Preecha o Campo Email'){
+                
+                $('#div-mensagem').addClass('text-danger')
+                $('#div-mensagem').text(msg);
+                }
 
-                 else{
-                    $('#div-mensagem').addClass('text-danger')
-                    $('#div-mensagem').text('Deu erro ao Enviar o Formulário! Provavelmente seu servidor de hospedagem não está com permissão de envio habilitada ou você está em um servidor local!');
-                    //$('#div-mensagem').text(msg);
-
-                 }
+                else{
+                $('#div-mensagem').addClass('text-danger')
+                $('#div-mensagem').text('Deu erro ao Enviar o Formulário! Provavelmente seu servidor de hospedagem não está com permissão de envio habilitada ou você está em um servidor local!');
+                //$('#div-mensagem').text(msg);
+                }
             }
         })
     })

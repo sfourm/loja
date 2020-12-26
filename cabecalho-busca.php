@@ -12,19 +12,20 @@ require_once("conexao.php");
                             <span>Categorias</span>
                         </div>
                         <ul>
-                             <?php 
-                        $query = $pdo->query("SELECT * FROM categorias order by nome asc ");
-                        $res = $query->fetchAll(PDO::FETCH_ASSOC);
+                            <?php 
+                                $query = $pdo->query("SELECT * FROM categorias order by nome asc ");
+                                $res = $query->fetchAll(PDO::FETCH_ASSOC);
 
-                        for ($i=0; $i < count($res); $i++) { 
-                          foreach ($res[$i] as $key => $value) {
-                          }
+                                for ($i=0; $i < count($res); $i++) { 
+                                foreach ($res[$i] as $key => $value) {
+                                }
 
-                          $nome = $res[$i]['nome'];
+                                $nome = $res[$i]['nome'];
 
-                          $nome_url = $res[$i]['nome_url'];
-                          $id = $res[$i]['id'];
-                          ?>
+                                $nome_url = $res[$i]['nome_url'];
+                                $id = $res[$i]['id'];
+                            ?>
+                          
                           <li><a href="sub-categoria-de-<?php echo $nome_url ?>"><?php echo $nome ?></a></li>
 
                           <?php } ?>
@@ -35,7 +36,6 @@ require_once("conexao.php");
                     <div class="hero__search">
                         <div class="hero__search__form">
                             <form action="lista-produtos.php" method="get">
-                               
                                 <input name="txtBuscar" type="text" placeholder="Deseja buscar um Produto?">
                                 <button type="submit" class="site-btn">BUSCAR</button>
                             </form>

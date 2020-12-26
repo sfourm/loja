@@ -1,7 +1,7 @@
 <?php
-
 require_once("../../../conexao.php"); 
 @session_start();
+
 $id_usuario = $_SESSION['id_usuario'];
 $id_produto = $_POST['id-produto'];
 $nota = $_POST['nota'];

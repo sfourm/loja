@@ -2,8 +2,8 @@
 require_once("config.php");
 require_once("conexao.php");
 @session_start();
-$id_usuario = @$_SESSION['id_usuario'];
 
+$id_usuario = @$_SESSION['id_usuario'];
 
 //VERIFICAR TOTAIS DO CARRINHO
 $res = $pdo->query("SELECT * from carrinho where id_usuario = '$id_usuario' and id_venda = 0 order by id asc");
@@ -49,14 +49,17 @@ $id_produto = $dados[$i]['id_produto'];
   $valor = @$dados_p[0]['valor'];
 }
 
-
 $total_item = $valor * $quantidade;
 @$total = @$total + $total_item;
-
 }
 
 @$total_c = number_format(@$total, 2, ',', '.');
 
+$res = @$pdo->query("SELECT * FROM usuarios where id = '$_SESSION[id_usuario]'"); 
+$dados = $res->fetchAll(PDO::FETCH_ASSOC);
+$nome_usu = @$dados[0]['nome'];
+$email_usu = @$dados[0]['email'];
+$cpf_usu = @$dados[0]['cpf'];
 ?>
 
 <!DOCTYPE html>
@@ -94,7 +97,6 @@ $total_item = $valor * $quantidade;
 
 <body>
 
-
     <!-- Page Preloder 
     <div id="preloder">
         <div class="loader"></div>
@@ -118,13 +120,12 @@ $total_item = $valor * $quantidade;
                      if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Cliente'){
                  ?>
                 <a href="sistema"><i class="fa fa-user"></i> Login</a>
-            <?php }else{ ?>
-                <a href="sistema/painel-cliente"><i class="fa fa-user"></i> Painel</a>
+            <?php } else { ?>
+                <a href="sistema/painel-cliente text-capitalize"><i class="fa fa-user"></i>Olá, <?php echo @$nome_usu ?></a>
             <?php } ?>
             </div>
         </div>
         <div class="humberger__menu__widget">
-
 
         </div>
         <nav class="humberger__menu__nav mobile-menu">
@@ -149,7 +150,6 @@ $total_item = $valor * $quantidade;
         <div id="mobile-menu-wrap"></div>
         <div class="header__top__right__social">
             <a target="_blank" href="#"><i class="fa fa-facebook"></i></a>
-            
             <a target="_blank" href="#"><i class="fa fa-instagram"></i></a>
             <a target="_blank" href="http://api.whatsapp.com/send?1=pt_BR&phone=<?php echo $whatsapp_link ?>" title="<?php echo $whatsapp ?>"><i class="fa fa-whatsapp"></i></a>
         </div>
@@ -208,37 +208,36 @@ $total_item = $valor * $quantidade;
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                     <li class="active"><a href="./index.php">Início</a></li>
-                      <li><a href="categorias.php">Categorias</a></li>
-                     <li><a href="#">Produtos</a>
-                        <ul class="header__menu__dropdown">
-                            <li><a href="produtos.php">Produtos</a></li>
-
-                            <li><a href="lista-produtos.php">Lista de Produtos</a></li>
-                            <li><a href="sub-categorias.php">Sub Categorias</a></li>
-                            <li><a href="promocoes.php">Promoções</a></li>
-                            <li><a href="combos.php">Combos</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="blog.php">Blog</a></li>
+                        <li class="active"><a href="./index.php">Início</a></li>
+                        <li><a href="categorias.php">Categorias</a></li>
+                        <li><a href="#">Produtos</a>
+                            <ul class="header__menu__dropdown">
+                                <li><a href="produtos.php">Produtos</a></li>
+                                <li><a href="lista-produtos.php">Lista de Produtos</a></li>
+                                <li><a href="sub-categorias.php">Sub Categorias</a></li>
+                                <li><a href="promocoes.php">Promoções</a></li>
+                                <li><a href="combos.php">Combos</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="blog.php">Blog</a></li>
                     
-                    <li><a href="contatos.php">Contatos</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="col-lg-3">
-            <div class="header__cart">
-                <ul>
-                   <li><a href="carrinho.php"><i class="fa fa-shopping-bag"></i> <span><?php echo $linhas ?></span></a></li>
-                </ul>
-                <div class="header__cart__price">item: <span>R$ <?php echo $total_c ?></span></div>
+                        <li><a href="contatos.php">Contato</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3">
+                <div class="header__cart">
+                    <ul>
+                    <li><a href="carrinho.php"><i class="fa fa-shopping-bag"></i> <span><?php echo $linhas ?></span></a></li>
+                    </ul>
+                    <div class="header__cart__price">item: <span>R$ <?php echo $total_c ?></span></div>
+                </div>
             </div>
         </div>
+        <div class="humberger__open">
+            <i class="fa fa-bars"></i>
+        </div>
     </div>
-    <div class="humberger__open">
-        <i class="fa fa-bars"></i>
-    </div>
-</div>
 </header>
 <!-- Header Section End -->
 
