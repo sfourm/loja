@@ -42,7 +42,7 @@ require_once("conexao.php");
                         </div>
                         <div class="hero__search__phone">
                             <div class="hero__search__phone__icon">
-                                <a class="text-dark" target="_blank" href="https://api.whatsapp.com/send?1=pt_BR&phone=<?php echo $whatsapp_link ?>" title="<?php echo $whatsapp ?>"><i class="fa fa-whatsapp"></i></a>
+                                <a class="text-info" target="_blank" href="http://api.whatsapp.com/send?1=pt_BR&phone=<?php echo $whatsapp_link ?>" title="<?php echo $whatsapp ?>"><i class="fa fa-whatsapp"></i></a>
                             </div>
                             <div class="hero__search__phone__text">
                                 <h6><?php echo $whatsapp ?></h6>

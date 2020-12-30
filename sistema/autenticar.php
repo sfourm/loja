@@ -5,7 +5,7 @@
     $email = $_POST['email_login'];
     $senha = md5($_POST['senha_login']);
 
-    $res = $pdo->query("SELECT * FROM usuarios where (email = '$email' or cpf = '$email') and senha_crip = '$senha' "); 
+    $res = $pdo->query("SELECT * FROM usuarios where (email = '$email' or cpf = '$email' or telefone = '$telefoneC') and senha_crip = '$senha' "); 
     $dados = $res->fetchAll(PDO::FETCH_ASSOC);
     
     if(@count($dados) > 0){

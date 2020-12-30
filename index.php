@@ -38,7 +38,7 @@ require_once("conexao.php");
           </div>
           <div class="hero__search__phone">
             <div class="hero__search__phone__icon">
-              <a class="text-info" target="_blank" href="https://api.whatsapp.com/send?1=pt_BR&phone=<?php echo $whatsapp_link ?>" title="<?php echo $whatsapp ?>"><i class="fa fa-whatsapp"></i></a>
+              <a class="text-info" target="_blank" href="http://api.whatsapp.com/send?1=pt_BR&phone=<?php echo $whatsapp_link ?>" title="<?php echo $whatsapp ?>"><i class="fa fa-whatsapp"></i></a>
             </div>
             <div class="hero__search__phone__text">
               <h6><?php echo $whatsapp ?></h6>
@@ -49,7 +49,7 @@ require_once("conexao.php");
         <div class="hero__item set-bg bg-light" data-setbg="img/hero/banner.jpg">
           <div class="hero__text">
             <span><?php echo strToUpper($nome_loja) ?></span>
-            <h2>Sites e<br />Sistemas</h2>
+            <h2>Produtos de<br />Primeira Linha</h2>
             <p>Aqui você encontra os melhores preços!!</p>
             <a href="produtos.php" class="primary-btn">COMPRAR AGORA</a>
           </div>
@@ -584,3 +584,9 @@ require_once("conexao.php");
 require_once("rodape.php");
 require_once("modal-carrinho.php");
 ?>
+
+
+
+
+
+

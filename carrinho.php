@@ -26,7 +26,7 @@ require_once("cabecalho-busca.php");
 
       <div class="col-md-6 mb-4 text-right">
         <a href="produtos.php" type="button" id="btn-comprar" class="bg-secondary primary-btn btn-sm" data-dismiss="modal">Comprar +</a>
-        <a href="" onclick="finalizarPedido()" type="submit" name="btn-finalizar" id="btn-finalizar" class="primary-btn btn-dark bg-dark btn-sm">Finalizar</a>
+        <a href="" onclick="finalizarPedido()" type="submit" name="btn-finalizar" id="btn-finalizar" class="primary-btn bg-info btn-sm">Finalizar</a>
       </div>
     </div>
   </div>
