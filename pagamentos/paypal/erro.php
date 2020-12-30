@@ -1,1 +1,0 @@
-<p> Ocorreu um problema com o seu pagamento e ele não foi concluído, faça novamente o pagamento!!!</p>
