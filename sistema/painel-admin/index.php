@@ -64,14 +64,15 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="Hugo Vasconcelos">
-
+        <meta name="description" content="Desenvolvimento de sites e sistemas web. Amplie sua marca com sites responsivos, otimizados e ideal para comercialização e engajamento. Sites e-commerce, portfólio, plataformas de curso e ensino a distancia, sites para casamentos e e diversos outros.">
+        <meta name="keywords" content="criar site, sites, desenvolvimento web, sites em Passos-MG, sites em HTML, sites em CSS, desenvolvimento de sites, marketing, construção de sites, sistemas em Passos-MG, site em Passos-MG,">
+        <meta name="author" content="Samuel Sergio">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="shortcut icon" type="imagem/x-icon" href="../../img/icone.png"/>
         <title>Painel Administrativo</title>
 
         <!-- Custom fonts for this template-->
@@ -87,9 +88,6 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
         <!-- Bootstrap core JavaScript-->
         <script src="../vendor/jquery/jquery.min.js"></script>
         <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-        <link rel="shortcut icon" href="../../img/logoicone2.ico" type="image/x-icon">
-        <link rel="icon" href="../../img/logoicone2.ico" type="image/x-icon">
     </head>
 
     <body id="page-top">
