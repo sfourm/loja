@@ -1,13 +1,13 @@
 <?php 
 require_once("../../conexao.php"); 
 @session_start();
-
-//VERIFICAR SE USUÁRIO ESTÁ AUTENTICADO
+    //verificar se o usuário está autenticado
 if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
     echo "<script language='javascript'> window.location='../index.php' </script>";
+
 }
 
-//VERIFICAR SE TEM ESTOQUE BAIXO
+//verificar se tem estoque baixo
 $query = $pdo->query("SELECT * FROM produtos where estoque <= '$nivel_estoque' order by estoque asc ");
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 if(@count($res) > 0){
@@ -16,15 +16,20 @@ if(@count($res) > 0){
     $classe_estoque = '';
 }
 
-//VERUFUCAR SE A TABELA ENVIO EMAILS ESTÁ VAZIA, SE TIVER INSERIR UM REGISTRO
+
+
+//verificar se a tabela envio emails está vazia, se tiver inserir um registro
 $query = $pdo->query("SELECT * FROM envios_email");
  $res = $query->fetchAll(PDO::FETCH_ASSOC);
  if(@count($res)==0){
-    $pdo->query("INSERT INTO envios_email (data, final, assunto, mensagem, link) values (curDate(), '0', '', '', '') ");}
+    $pdo->query("INSERT INTO envios_email (data, final, assunto, mensagem, link) values (curDate(), '0', '', '', '') ");
+ }
+
+
 
 $agora = date('Y-m-d');
 
-//VARIÁVEIS MENU
+    //variaveis para o menu
 $pag = @$_GET["pag"];
 $menu1 = "produtos";
 $menu2 = "categorias";
@@ -49,30 +54,36 @@ $email_usu = @$dados[0]['email'];
 $cpf_usu = @$dados[0]['cpf'];
 $imagem_usu = @$dados[0]['imagem'];
 
+
 //SCRIPT PARA VERIFICAR OS PRODUTOS QUE ESTÃO EM PROMOÇÃO
 $pdo->query("UPDATE produtos SET promocao = 'Não' "); 
 $res = $pdo->query("SELECT * FROM promocoes where ativo = 'Sim' and data_inicio <= curDate() and data_final >= curDate() "); 
 $dados = $res->fetchAll(PDO::FETCH_ASSOC);
-
 for ($i=0; $i < count($dados); $i++) { 
-    foreach ($dados[$i] as $key => $value) {
-    }
-
+                      foreach ($dados[$i] as $key => $value) {
+                      }
 $id_pro = @$dados[$i]['id_produto'];
+
 $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro"); 
 }
 ?>
 
+
+
+
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="Hugo Vasconcelos">
+        <meta name="description" content="Desenvolvimento de sites e sistemas web. Amplie sua marca com sites responsivos, otimizados e ideal para comercialização e engajamento. Sites e-commerce, portfólio, plataformas de curso e ensino a distancia, sites para casamentos e e diversos outros.">
+        <meta name="keywords" content="criar site, sites, desenvolvimento web, sites em Passos-MG, sites em HTML, sites em CSS, desenvolvimento de sites, marketing, construção de sites, sistemas em Passos-MG, site em Passos-MG,">
+        <meta name="author" content="Samuel Sergio">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
         <title>Painel Administrativo</title>
+        <link rel="shortcut icon" type="imagem/x-icon" href="../../img/icone.png"/>
 
         <!-- Custom fonts for this template-->
         <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -81,15 +92,11 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
         <!-- Custom styles for this template-->
         <link href="../css/sb-admin-2.min.css" rel="stylesheet">
         <link href="../css/style.css" rel="stylesheet">
-
         <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
         <!-- Bootstrap core JavaScript-->
         <script src="../vendor/jquery/jquery.min.js"></script>
         <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-        <link rel="shortcut icon" href="../../img/logoicone2.ico" type="image/x-icon">
-        <link rel="icon" href="../../img/logoicone2.ico" type="image/x-icon">
     </head>
 
     <body id="page-top">
@@ -109,14 +116,15 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
                 <hr class="sidebar-divider">
 
                 <!-- Heading -->
-                <div class="sidebar-heading">Cadastros</div>
+                <div class="sidebar-heading">
+                    Cadastros
+                </div>
 
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                         <i class="fas fa-box-open"></i>
                         <span>Produtos</span>
                     </a>
-
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="index.php?pag=<?php echo $menu1 ?>">Produtos</a>
@@ -147,7 +155,9 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
                 <hr class="sidebar-divider">
 
                 <!-- Heading -->
-                <div class="sidebar-heading"> Consultas</div>
+                <div class="sidebar-heading">
+                    Consultas
+                </div>
 
                 <!-- Nav Item - Charts -->
                 <li class="nav-item">
@@ -172,17 +182,15 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
                     </a>
                 </li>
 
-
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?pag=<?php echo $menu13 ?>">
                         <i class="fas fa-fw fa-table <?php echo $classe_estoque ?>"></i>
                         <span class="<?php echo $classe_estoque ?>">Estoque Baixo</span>
                     </a>
-                </li>
-                
+                </li> 
+
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block">
-
 
                 <li class="nav-item">
                     <a class="nav-link" href="" data-toggle="modal" data-target="#ModalEmail">
@@ -196,7 +204,7 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
                         <i class="fas fa-fw fa-table"></i>
                         <span class="">Blog</span>
                     </a>
-                 </li>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="backup.php">
@@ -231,14 +239,21 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
                             <!-- Nav Item - User Information -->
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small text-capitalize"><?php echo @$nome_usu ?></span>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo @$nome_usu ?></span>
                                     <img class="img-profile rounded-circle" src="../../img/<?php echo $imagem_usu ?>">
                                 </a>
-                                 <!-- Dropdown - User Information -->
+                                <!-- Dropdown - User Information -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="" data-toggle="modal" data-target="#ModalPerfil"><i class="fas fa-user fa-sm fa-fw mr-2 text-primary"></i>Editar Perfil</a>
+                                    <a class="dropdown-item" href="" data-toggle="modal" data-target="#ModalPerfil">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-primary"></i>
+                                        Editar Perfil
+                                    </a>
+
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="../logout.php"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-danger"></i>Sair</a>
+                                    <a class="dropdown-item" href="../logout.php">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-danger"></i>
+                                        Sair
+                                    </a>
                                 </div>
                             </li>
                         </ul>
@@ -247,7 +262,6 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
 
                     <!-- Begin Page Content -->
                     <div class="container-fluid">
-
                         <?php if ($pag == null) { 
                             include_once("home.php"); 
 
@@ -293,6 +307,7 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
                         } else if ($pag==$menu14) {
                             include_once($menu14.".php");
                         
+
                         } else {
                             include_once("home.php");
                         }
@@ -312,6 +327,9 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
             <i class="fas fa-angle-up"></i>
         </a>
 
+
+
+
         <!--  Modal Perfil-->
         <div class="modal fade" id="ModalPerfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
@@ -322,6 +340,8 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
+
+
 
                     <form id="form-perfil" method="POST" enctype="multipart/form-data">
                         <div class="modal-body">
@@ -341,18 +361,19 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
                                         <label >Email</label>
                                         <input value="<?php echo @$email_usu ?>" type="email" class="form-control" id="email-usuario" name="email-usuario" placeholder="Email">
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label >Senha</label>
-                                            <input value="" type="password" class="form-control" id="senha" name="senha" placeholder="Senha">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label >Senha</label>
+                                                <input value="" type="password" class="form-control" id="senha" name="senha" placeholder="Senha">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label >Confirmar Senha</label>
-                                            <input value="" type="password" class="form-control" id="conf-senha" name="conf-senha" placeholder="Senha">
+                                        <div class="col-md-6">
+                                                <div class="form-group">
+                                                <label >Confirmar Senha</label>
+                                                <input value="" type="password" class="form-control" id="conf-senha" name="conf-senha" placeholder="Senha">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -369,10 +390,8 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
                                     <img src="../../img/sem-foto.jpg" width="200" height="200" id="target">
                                     <?php } ?>
                                 </div>
-                            </div> 
-                            <small>
-                                <div id="mensagem-perfil" class="mr-4"> </div>
-                            </small>
+                            </div>       
+                            <small><div id="mensagem-perfil" class="mr-4"></div></small>
                         </div>
                         <div class="modal-footer">
                             <input value="<?php echo $_SESSION['id_usuario'] ?>" type="hidden" name="txtid" id="txtid">
@@ -384,13 +403,14 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
                 </div>
             </div>
         </div>
-    
+
         <!--  Modal Email-->
         <div class="modal fade" id="ModalEmail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Email Marketing</h5>
+
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -398,13 +418,13 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
 
                     <form id="form-perfil" method="POST" enctype="multipart/form-data">
                         <div class="modal-body">
-                            <?php
+                            <?php 
                             $query = $pdo->query("SELECT * FROM emails where ativo = 'Sim' ");
                             $res = $query->fetchAll(PDO::FETCH_ASSOC);
-                            $total_emails = @count($res);?>
+                            $total_emails = @count($res);
+                            ?>
 
                             <p><small>Total de Emails Cadastrados - <?php echo $total_emails ?></small></p>
-
                             <div class="form-group">
                                 <label >Assunto Email</label>
                                 <input  type="text" class="form-control" id="assunto-email" name="assunto-email" placeholder="Assunto do Email">
@@ -420,11 +440,8 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
                                 <textarea maxlength="1000" class="form-control" id="mensagem-email" name="mensagem-email"></textarea>
                             </div>
 
-                            <small>
-                                <div id="mensagem-email-marketing" class="mr-4"></div>
-                            </small>
+                            <small><div id="mensagem-email-marketing" class="mr-4"></div></small>
                         </div>
-
                         <div class="modal-footer">
                             <button type="button" id="btn-fechar-email" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button type="submit" name="btn-salvar-email" id="btn-salvar-email" class="btn btn-primary">Salvar</button>
@@ -433,6 +450,7 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
                 </div>
             </div>
         </div>
+
         <!-- Core plugin JavaScript-->
         <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
         <!-- Custom scripts for all pages-->
@@ -466,12 +484,13 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
                 if(msg.trim() === 'Salvo com Sucesso!'){                   
                     $('#btn-fechar-perfil').click();
                     window.location='index.php';
-                    }
-                else{
+
+                } else {
                     $('#mensagem-perfil').addClass('text-danger')
                     $('#mensagem-perfil').text(msg);
                  }
             },
+
             cache: false,
             contentType: false,
             processData: false,
@@ -501,23 +520,23 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
             data: $('form').serialize(),
             dataType: "text",
             success: function(msg){
-               if(msg.trim() === 'Enviado com Sucesso!'){
+               if (msg.trim() === 'Enviado com Sucesso!'){
                     $('#mensagem-email-marketing').removeClass('text-info')
                     $('#mensagem-email-marketing').addClass('text-success')
                     $('#mensagem-email-marketing').text(msg);
                     $('#assunto-email').val('');
                     $('#link-email').val('');
                     $('#mensagem-email').val('');
-
-                 }else if(msg.trim() === 'Preencha o Campo Assunto!'){
+                    
+                } else if (msg.trim() === 'Preencha o Campo Assunto!'){
                     $('#mensagem-email-marketing').addClass('text-danger')
                     $('#mensagem-email-marketing').text(msg);
-                 
-                 }else if(msg.trim() === 'Preencha o Campo Mensagem!'){
+    
+                } else if (msg.trim() === 'Preencha o Campo Mensagem!'){
                     $('#mensagem-email-marketing').addClass('text-danger')
                     $('#mensagem-email-marketing').text(msg);
 
-                 }else{
+                } else {
                     $('#mensagem-email-marketing').addClass('text-danger')
                     $('#mensagem-email-marketing').text('Deu erro ao Enviar o Formulário! Provavelmente seu servidor de hospedagem não está com permissão de envio habilitada ou você está em um servidor local!');
                     //$('#div-mensagem').text(msg);
@@ -526,6 +545,8 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
         })
     })
 </script>
+
+
 
 <!--SCRIPT PARA CARREGAR IMAGEM -->
 <script type="text/javascript">
@@ -536,11 +557,9 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
         reader.onloadend = function () {
             target.src = reader.result;
         };
-
         if (file) {
             reader.readAsDataURL(file);
-
-        }else{
+        } else {
             target.src = "";
         }
     }

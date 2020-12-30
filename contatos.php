@@ -20,7 +20,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                     <div class="contact__widget">
                         <span class="icon_whatsapp">
-                            <a  target="_blank" href="http://api.whatsapp.com/send?1=pt_BR&phone=<?php echo $whatsapp_link ?>" title="<?php echo $whatsapp ?>"><i class="fa fa-whatsapp "></i></a>
+                            <a  target="_blank" href="https://api.whatsapp.com/send?1=pt_BR&phone=<?php echo $whatsapp_link ?>" title="<?php echo $whatsapp ?>"><i class="fa fa-whatsapp "></i></a>
                         </span>
                         <h4>Whatsapp</h4>
                         <p><?php echo $whatsapp ?></p>

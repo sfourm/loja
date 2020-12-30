@@ -42,7 +42,7 @@
                 <div class="row mt-4">
                     <div class="col-md-12">
                         <p class="text-center">Depósitos ou Transferências </p> 
-                        <span class="text-muted"><small> Precisamos que nos envie o comprovante para a liberação do pagamento e envio, se for transferência será liberado de Imediato, caso seja depósito ou Doc precisa aguardar o pagamento ser compensado, geralmente de 12 a 24 horas, pode nos mandar o comprovante no WhatsApp <a class="text-muted" href="http://api.whatsapp.com/send?1=pt_BR&phone=<?php echo $whatsapp_link ?>" alt="<?php echo $whatsapp ?>" target="_blank"><i class="fa fa-whatsapp mr-1 text-success"></i><?php echo $whatsapp ?></a> ou no email <?php echo $email ?> !!</span></small>
+                        <span class="text-muted"><small> Precisamos que nos envie o comprovante para a liberação do pagamento e envio, se for transferência será liberado de Imediato, caso seja depósito ou Doc precisa aguardar o pagamento ser compensado, geralmente de 12 a 24 horas, pode nos mandar o comprovante no WhatsApp <a class="text-muted" href="https://api.whatsapp.com/send?1=pt_BR&phone=<?php echo $whatsapp_link ?>" alt="<?php echo $whatsapp ?>" target="_blank"><i class="fa fa-whatsapp mr-1 text-success"></i><?php echo $whatsapp ?></a> ou no email <?php echo $email ?> !!</span></small>
                         <a href="img/pagamentos/contas-grande.png" title="Clique para Ampliar" target="_blank">
                         <img src="img/pagamentos/contas.png" width="100%" class="mt-3">
                         <p class="text-danger text-center"><i><small>Clique para Ampliar</small></i></p> </a>

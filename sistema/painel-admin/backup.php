@@ -1,16 +1,17 @@
 <?php 
+
 @session_start();
 include('../../conexao.php');
-
 //$conn = $pdo;
 
-//VERIFICAR SE USUÁRIO ESTÁ VERIFICADO
+
+    //verificar se o usuário está autenticado
 if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
     echo "<script language='javascript'> window.location='../index.php' </script>";
     exit();
 }
 
-//LER AS TABELAS
+//Ler as tabelas
 $result_tabela = "SHOW TABLES";
 $resultado_tabela = mysqli_query($conn, $result_tabela);
 while($row_tabela = mysqli_fetch_row($resultado_tabela)){
@@ -20,16 +21,16 @@ while($row_tabela = mysqli_fetch_row($resultado_tabela)){
 
 $result = "";
 foreach($tabelas as $tabela){
-    //PESQUISAR NOME DAS COLUNAS
+    //Pesquisar o nome das colunas
     $result_colunas = "SELECT * FROM " . $tabela;
     $resultado_colunas = mysqli_query($conn, $result_colunas);
     $num_colunas = mysqli_num_fields($resultado_colunas);
     //echo "Quantidade de colunas na tabela: ". $tabela. " - " . $num_colunas . "<br>";
     
-    //CRIAR INSTRUÇÃO PARA APAGAR A TABELA CASO A MESMA EXISTA NO BD
+    //Criar a intrução para apagar a tabela caso a mesma exista no BD
     $result .= 'DROP TABLE IF EXISTS '.$tabela.';';
     
-    //PESQUISAR COMO A COLUNA É CRIADA
+    //Pesquisar como a coluna é criada
     $result_cr_col = "SHOW CREATE TABLE " . $tabela;
     $resultado_cr_col = mysqli_query($conn, $result_cr_col);
     $row_cr_col = mysqli_fetch_row($resultado_cr_col);
@@ -37,19 +38,19 @@ foreach($tabelas as $tabela){
     $result .= "\n\n" . $row_cr_col[1] . ";\n\n";
     //echo $result;
     
-    //PERCORRER O ARRAY DAS COLUNAS
+    //Percorrer o array de colunas
     for($i = 0; $i < $num_colunas; $i++){
-        //LER O VALOR DE CADA COLUNA NO BANCO DE DADOS
+        //Ler o valor de cada coluna no bando de dados
         while($row_tp_col = mysqli_fetch_row($resultado_colunas)){
             //var_dump($row_tp_col);
-            //CRIAR INSTRUÇÃO DA QUERY PARA INSERIR OS DADOS
+            //Criar a intrução da Query para inserir os dados
             $result .= 'INSERT INTO ' . $tabela . ' VALUES(';
             
-            //LER OS DADOS DA TABELA
+            //Ler os dados da tabela
             for($j = 0; $j < $num_colunas; $j++){
-                //addslashes — ADICIONA AS BARRAS INVERTIDAS NA STRING
+                //addslashes — Adiciona barras invertidas a uma string
                 $row_tp_col[$j] = addslashes($row_tp_col[$j]);
-                //str_replace —  SUBSTITUI TODAS AS OCORRÊNCIAS DA STRING \n PELA \\n
+                //str_replace — Substitui todas as ocorrências da string \n pela \\n
                 $row_tp_col[$j] = str_replace("\n", "\\n", $row_tp_col[$j]);
                 
                 if(isset($row_tp_col[$j])){
@@ -73,14 +74,14 @@ foreach($tabelas as $tabela){
     //echo $result;
 }
 
-//CRIAR DIRETÓRIO BACKUP
+//Criar o diretório de backup
 $diretorio = 'backup/';
 if(!is_dir($diretorio)){
     mkdir($diretorio, 0777, true);
     chmod($diretorio, 0777);
 }
 
-//NOME DO ARQUIVO BACKUP
+//Nome do arquivo de backup
 $data = date('Y-m-d-h-i-s');
 $nome_arquivo = $diretorio . "db_backup_".$data;
 //echo $nome_arquivo;
@@ -89,10 +90,10 @@ $handle = fopen($nome_arquivo . '.sql', 'w+');
 fwrite($handle, $result);
 fclose($handle);
 
-//MONTAGEM DO ARQUIVO BACKUP
+//Montagem do link do arquivo
 $download = $nome_arquivo . ".sql";
 
-//ADICIONAR HEADER PARA DOWNLOAD
+//Adicionar o header para download
 if(file_exists($download)){
     header("Pragma: public");
     header("Expires: 0");
@@ -108,4 +109,19 @@ if(file_exists($download)){
 }else{
     $_SESSION['msg'] = "<span style='color: red;'>Erro ao exportar o BD</span>";
 }
+
+
+
+
+
 ?>
+
+
+
+
+
+
+
+
+
+

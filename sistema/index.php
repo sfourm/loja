@@ -12,17 +12,19 @@
 ?>
 
 <!DOCTYPE html>
-<html>
-   <head>
+<html lang="pt-br">
+   <head >
       <title>Login - <?php echo $nome_loja ?></title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="Desenvolvimento de sites e sistemas web. Amplie sua marca com sites responsivos, otimizados e ideal para comercialização e engajamento. Sites e-commerce, portfólio, plataformas de curso e ensino a distancia, sites para casamentos e e diversos outros.">
+      <meta name="keywords" content="criar site, sites, desenvolvimento web, sites em Passos-MG, sites em HTML, sites em CSS, desenvolvimento de sites, marketing, construção de sites, sistemas em Passos-MG, site em Passos-MG,">
      
       <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
       <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
       <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
       <link href="../css/login.css" rel="stylesheet">
-      <link rel="shortcut icon" href="../img/logoicone1.ico" type="image/x-icon">
-      <link rel="icon" href="../img/logoicone2.ico" type="image/x-icon">
+      <link rel="shortcut icon" type="imagem/x-icon" href="../img/icone.png"/>
       
       <script src="../js/login.js"></script>
       <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -52,7 +54,7 @@
                         <div class="form-group">
                            <label for="exampleInputEmail1" class="d-block">Senha</label>
                            <input type="password" class="form-control d-inline-block" id="senha_login" name="senha_login" placeholder="Inserir Senha">
-                           <button class="d-inline-block form-control" type="button" onClick="mostrarSenha()"><i class="fa fa-eye"></i></button>
+                           <button class="d-inline-block form-control" type="button" onClick="mostrarSenhaLogin()"><i class="fa fa-eye"></i></button>
                         </div>
                      
                         <div class="col-md-12 text-center mt-4">
@@ -88,34 +90,34 @@
                   <div class="col-md-6">
                      <div class="form-group">
                         <label for="exampleInputEmail1">Nome</label>
-                        <input type="text" class="form-control text-capitalize" id="nome" name="nome" placeholder="Nome">
+                        <input type="text" class="form-control text-capitalize" id="nome" name="nome" placeholder="Nome" required>
                      </div>
                   </div>
 
                   <div class="col-md-6">
                      <div class="form-group">
                         <label for="exampleInputEmail1">Sobrenome</label>
-                        <input type="text" class="form-control text-capitalize" id="sobrenome" name="sobrenome" placeholder="Sobrenome">
+                        <input type="text" class="form-control text-capitalize" id="sobrenome" name="sobrenome" placeholder="Sobrenome" >
                      </div>
                   </div>
                </div>
 
                <div class="form-group">
                   <label for="exampleInputEmail1">Email</label>
-                  <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
                </div>
                <div class="row">
                   <div class="col-md-6">
                      <div class="form-group">
                         <label for="exampleInputEmail1">Telefone</label>
-                        <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone">
+                        <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone" required>
                      </div>
                   </div>
 
                   <div class="col-md-6">
                      <div class="form-group">
                         <label for="exampleInputEmail1">CPF</label>
-                        <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF">
+                        <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF" required>
                      </div>
                   </div>
                </div>
@@ -124,16 +126,16 @@
                   <div class="col-md-6">
                      <div class="form-group d-inline">
                         <label for="exampleInputEmail1" class="d-block">Senha</label>
-                        <input type="password" class="form-control d-inline-block" id="senha" name="senha" placeholder="Inserir Senha" style="width: 78%">
-                        <button class="d-inline-block form-control" type="button" onClick="mostrarSenha()" style="width: 20%"><i class="fa fa-eye"></i></button>
+                        <input type="password" class="form-control d-inline-block" id="senha" name="senha" placeholder="Inserir Senha" required >
+                        <button class="d-inline-block form-control" type="button" onClick="mostrarSenha()"><i class="fa fa-eye"></i></button>
                      </div>
                   </div>
 
                   <div class="col-md-6">
                      <div class="form-group d-inline">
                         <label for="exampleInputEmail1" class="d-block">Confirmar Senha</label>
-                        <input type="password" class="form-control d-inline-block" id="confirmar-senha" name="confirmar-senha" placeholder="Confirmar Senha" style="width: 78%">
-                        <button class="d-inline-block form-control" type="button" onClick="mostrarConfSenha()" style="width: 20%"><i class="fa fa-eye"></i></button>
+                        <input type="password" class="form-control d-inline-block" id="confirmar-senha" name="confirmar-senha" placeholder="Confirmar Senha" required>
+                        <button class="d-inline-block form-control" type="button" onClick="mostrarConfSenha()"><i class="fa fa-eye"></i></button>
                      </div>
                   </div>
                </div>
@@ -236,5 +238,39 @@ if (@$_GET["email_rodape"] != null) {
       })
    })
 </script>
+
+<script>                        
+function mostrarConfSenha() {
+  var senha = document.getElementById("confirmar-senha");
+  if (senha.type === "password") {
+    senha.type = "text";
+  } else {
+    senha.type = "password";
+  }
+}
+</script>
+
+<script>                        
+function mostrarSenha() {
+  var senha = document.getElementById("senha");
+  if (senha.type === "password") {
+    senha.type = "text";
+  } else {
+    senha.type = "password";
+  }
+}
+</script>
+
+<script>                        
+function mostrarSenhaLogin() {
+  var senha = document.getElementById("senha_login");
+  if (senha.type === "password") {
+    senha.type = "text";
+  } else {
+    senha.type = "password";
+  }
+}
+</script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 <script src="../js/mascara.js"></script>

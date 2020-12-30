@@ -45,7 +45,8 @@ h3 {
     background-color: #a00000;}   
     .mybtn:hover {
         background-color: #880000;
-    }
+		-webkit-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5); 
+		box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);}
 
 .login-or {
 	position: relative;
@@ -101,13 +102,10 @@ form .error {
 
 /* FORM CADASTRO */
 #modalCadastro > div > div > div.modal-body > form > div > div > div> .form-control:focus {color: #495057; background-color: #fff; border: none; outline: 0; -webkit-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5); box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);}
+#senha {width: 78%}
+#confirmar-senha {width: 78%}
+#modalCadastro > div > div > div.modal-body > form > div:nth-child(4) > div:nth-child(2) > div > button {width: 20%}
 #modalCadastro > div > div > div.modal-body > form > div:nth-child(4) > div:nth-child(1) > div > button {width: 20%}
 #modalCadastro > div > div > div.modal-body > form > div > div > div > button > i:hover{cursor: pointer; color: #000;}
-#modalCadastro > div > div > div.modal-body > form > div > div > div > button > i:focus{color: #495057; background-color: #fff; border-color: #040404; outline: 0; box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.25);}
-#btn-fechar-cadastrar:hover {-webkit-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5); box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);}
-#btn-cadastrar:hover, :focus {-webkit-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5); box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);}
 
-/* FORM RECUPERAR SENHA */
-#email-recuperar:hover, :focus { border: none; -webkit-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5); box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);}
-#modalRecuperar > div > div > div.modal-footer > button.btn.btn-secondary:hover {-webkit-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5); box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);}
-#btn-recuperar:hover, :focus { border: none; -webkit-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5); box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);}
+#first > div > div > div > a > img {max-width: 100%}

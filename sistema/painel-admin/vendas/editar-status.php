@@ -1,9 +1,11 @@
 <?php
+
 require_once("../../../conexao.php"); 
 
 $id = $_POST['txtid2'];
 $status = $_POST['status'];
 $rastreio = $_POST['rastreio'];
+
 $texto = 'Mudança de status no pedido, pedido '.$status;
 
 if($status == 'Enviado'){
@@ -14,8 +16,14 @@ if($status == 'Enviado'){
 	}
 }
 
+
+
 $pdo->query("UPDATE vendas SET status = '$status', rastreio = '$rastreio' WHERE id = '$id'");
+
+
 $pdo->query("INSERT mensagem SET id_venda = '$id', texto = '$texto', usuario = 'Admin', data = curDate(), hora = curTime()");
+
+
 
 $res2 = $pdo->query("SELECT * FROM vendas where id = '$id'");
 $dados2 = $res2->fetchAll(PDO::FETCH_ASSOC);
@@ -32,5 +40,7 @@ $mensagem = utf8_decode('Seu pedido teve uma nova atualização, pedido '.$statu
 $cabecalhos = "From: ".$email;
 @mail($destinatario, $assunto, $mensagem, $cabecalhos);
 
+
 echo 'Editado com Sucesso!!';
+
 ?>

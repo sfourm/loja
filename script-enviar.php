@@ -64,7 +64,7 @@ $res = $query->fetchAll(PDO::FETCH_ASSOC);
 				<a title='$url_nova' href='$url_nova' target='_blank'>$url_nova</a>
 				
 				<br><br><br>
-				WhatsApp -> <a href='http://api.whatsapp.com/send?1=pt_BR&phone=$whatsapp_link' alt='$whatsapp' target='_blank'><i class='fab fa-whatsapp'></i>$whatsapp</a>
+				WhatsApp -> <a href='https://api.whatsapp.com/send?1=pt_BR&phone=$whatsapp_link' alt='$whatsapp' target='_blank'><i class='fab fa-whatsapp'></i>$whatsapp</a>
 
 				<br><br><br>
        			<i> Caso não queira mais receber nossos emails <a href='$url_descadastrar' target='_blank'> clique aqui </a> para se descadastrar!</i> <br><br>";

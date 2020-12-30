@@ -23,6 +23,7 @@ require_once("cabecalho-busca.php");
 $query = $pdo->query("SELECT * FROM produtos where nome_url = '$produto_get' ");
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 $nome = $res[0]['nome'];
+$vendas = $res[0]['vendas'];
 $imagem = $res[0]['imagem'];
 $sub_cat = $res[0]['sub_categoria'];
 $valor = $res[0]['valor'];
@@ -92,12 +93,7 @@ $querye = $pdo->query("SELECT * FROM tipo_envios where id = '$tipo_envio' ");
                 <div class="product__details__text">
                     <h3><?php echo $nome ?></h3>
                     <div class="product__details__rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                        <span>(18 reviews)</span>
+                        <span>Total de vendas (<?php echo $vendas ?>)</span>
                     </div>
                     <div class="product__details__price">R$ <?php echo $valor ?></div>
                     <p><?php echo $descricao ?></p>
@@ -218,11 +214,11 @@ $querye = $pdo->query("SELECT * FROM tipo_envios where id = '$tipo_envio' ");
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <div class="product__details__tab">
+                <div class="product__details__tab justify-content-center">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
-                            aria-selected="true">Descrição</a>
+                            aria-selected="false">Descrição</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
@@ -243,7 +239,7 @@ $querye = $pdo->query("SELECT * FROM tipo_envios where id = '$tipo_envio' ");
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             <div class="product__details__tab__desc">
-                                <h6>Informações do Produto</h6>
+                                <h6>Descrição do Produto</h6>
                                 <p><?php echo $desc_longa ?></p>
                             </div>
                         </div>
@@ -453,7 +449,7 @@ require_once("rodape.php");
    function irCarrinho(idproduto, combo){
         event.preventDefault();
          $.ajax({
-            url:"carrinho/inserir-carrinho.php",
+            url: "carrinho/inserir-carrinho.php",
             method:"post",
             data: {idproduto, combo},
             dataType: "text",

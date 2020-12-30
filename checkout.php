@@ -11,6 +11,7 @@ $pagar = new PagamentoMP;
 
 <?php
 require_once("cabecalho-busca.php");
+
 @session_start();
 
 if(@$_SESSION['id_usuario'] == null){
@@ -174,7 +175,7 @@ $estado = $dados[0]['estado'];
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="checkout__input">
-                                                <button id="btn-cupom" type="submit" class="site-btn bg-info">APLICAR CUPOM</button>
+                                                <button id="btn-cupom" type="submit" class="site-btn bg-dark">APLICAR CUPOM</button>
                                             </div>
                                         </div>
                                     </div>  

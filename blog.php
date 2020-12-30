@@ -73,7 +73,7 @@
                     for($i = 0; $i < @$num_paginas; $i++){
                         $estilo = '';
                         if($pagina == $i){
-                            $estilo = 'bg-info text-light';
+                            $estilo = 'bg-dark text-light';
                         }
                         if($pagina >= ($i - 2) && $pagina <= ($i + 2)){ ?>
                          <a href="<?php echo $nome_pag ?>?pagina=<?php echo $i ?>" class="<?php echo $estilo ?>"><?php echo $i + 1 ?></a>
