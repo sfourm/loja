@@ -137,7 +137,7 @@ require_once("conexao.php");
             $desconto = $resp[0]['desconto'];
             $valor_promo = number_format($valor_promo, 2, ',', '.');?>
 
-          <div class="col-lg-3 col-md-4 col-sm-6 mix sapatos fresh-meat">
+          <div class="col-lg-3 col-md-4 col-sm-6">
             <div class="product__discount__item">
               <div class="product__discount__item__pic set-bg"
               data-setbg="img/produtos/<?php echo $imagem ?>">
@@ -154,7 +154,7 @@ require_once("conexao.php");
             </div>
           </div>
         <?php }else{ ?>
-        <div class="col-lg-3 col-md-4 col-sm-6 mix sapatos fresh-meat">
+        <div class="col-lg-3 col-md-4 col-sm-6">
           <div class="featured__item">
             <div class="featured__item__pic set-bg" data-setbg="img/produtos/<?php echo $imagem ?>">
               <ul class="featured__item__pic__hover">

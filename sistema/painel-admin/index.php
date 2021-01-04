@@ -16,7 +16,7 @@ if(@count($res) > 0){
     $classe_estoque = '';
 }
 
-//VERUFUCAR SE A TABELA ENVIO EMAILS ESTÁ VAZIA, SE TIVER INSERIR UM REGISTRO
+//VERIFICAR SE A TABELA ENVIO EMAILS ESTÁ VAZIA, SE TIVER INSERIR UM REGISTRO
 $query = $pdo->query("SELECT * FROM envios_email");
  $res = $query->fetchAll(PDO::FETCH_ASSOC);
  if(@count($res)==0){
