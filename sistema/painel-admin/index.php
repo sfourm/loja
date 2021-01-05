@@ -18,8 +18,8 @@ if(@count($res) > 0){
 
 //VERIFICAR SE A TABELA ENVIO EMAILS ESTÁ VAZIA, SE TIVER INSERIR UM REGISTRO
 $query = $pdo->query("SELECT * FROM envios_email");
- $res = $query->fetchAll(PDO::FETCH_ASSOC);
- if(@count($res)==0){
+$res = $query->fetchAll(PDO::FETCH_ASSOC);
+if(@count($res)==0){
     $pdo->query("INSERT INTO envios_email (data, final, assunto, mensagem, link) values (curDate(), '0', '', '', '') ");}
 
 $agora = date('Y-m-d');
