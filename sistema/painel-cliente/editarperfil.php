@@ -56,23 +56,22 @@ $estado = $dados[0]['estado'];
                                     <div class="modal-content">
                                         <div class="pb-3 pt-3 ">
                                             <h4 class="text-center" id="exampleModalLabel">Editar Dados Pessoais</h4>
-                                            <div id="mensagem-dados" class="mr-4"></div>
                                         </div>
                                         <form id="form-dados" method="POST">
                                             <div class="modal-body">
-                                            <div class="form-group row">
-                                                <div class="col-6"> <label>Nome</label> <input value="<?php echo @$nome_usu ?>" type="text" class="form-control" id="nome-usuario" name="nome-usuario" placeholder="Nome"> </div>
-                                                <div class="col-6"> <label>Sobrenome</label> <input value="<?php echo @$sobrenome_usu ?>" type="text" class="form-control" id="sobrenome-usuario" name="sobrenome-usuario" placeholder="Sobrenome"> </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-6"> <label>CPF</label> <input value="<?php echo @$cpf_usu ?>" type="text" class="form-control" id="cpf-usuario" name="cpf-usuario" placeholder="CPF"> </div>
-                                                <div class="col-6"> <label>Telefone</label> <input value="<?php echo @$telefone_usu ?>" type="text" class="form-control" id="telefone-usuario" name="telefone-usuario" placeholder="Telefone"> </div>
-                                            </div>
-                                    
+                                                <div class="row">
+                                                    <div class="form-group col-12 row">
+                                                        <div class="col-6"> <label>Nome</label> <input value="<?php echo @$nome_usu ?>" type="text" class="form-control" id="nome-usuario" name="nome-usuario" placeholder="Nome"> </div>
+                                                        <div class="col-6"> <label>Sobrenome</label> <input value="<?php echo @$sobrenome_usu ?>" type="text" class="form-control" id="sobrenome-usuario" name="sobrenome-usuario" placeholder="Sobrenome"> </div>
+                                                        <div class="col-6 pt-3"> <label>CPF</label> <input value="<?php echo @$cpf_usu ?>" type="text" class="form-control" id="cpf-usuario" name="cpf-usuario" placeholder="CPF"> </div>
+                                                        <div class="col-6 pt-3"> <label>Telefone</label> <input value="<?php echo @$telefone_usu ?>" type="text" class="form-control" id="telefone-usuario" name="telefone-usuario" placeholder="Telefone"> </div>
+                                                    </div>
+                                                    <div id="mensagem-dados" class="text-center col-12"></div> 
+                                                </div>
                                             </div>
                                             <div class="modal-footer"> 
                                                 <label class="pr-4">
-                                                    <input type="checkbox" checked="checked" name="sameadr" required> Deseja realmente alterar seus dados?
+                                                    <input type="checkbox" name="confirmar" id="confirmar" required> Deseja realmente alterar seus dados?
                                                 </label>
                                                 <input value="<?php echo $_SESSION['id_usuario'] ?>" type="hidden" name="txtid" id="txtid"> 
                                                 <input value="<?php echo $_SESSION['cpf_usuario'] ?>" type="hidden" name="antigo" id="antigo"> 
@@ -91,7 +90,7 @@ $estado = $dados[0]['estado'];
                                     <div class="modal-content">
                                         <div class="pb-3 pt-3 ">
                                             <h4 class="text-center" id="exampleModalLabel">Editar Endereço</h4>
-                                            <div id="mensagem-endereco" class="mr-4"></div>
+                                            
                                         </div>
                                         <form id="form-endereco" method="POST">
                                             <div class="modal-body">
@@ -169,12 +168,18 @@ $estado = $dados[0]['estado'];
                                                             </select>
                                                         </div>
                                                     </div>
+                                                    <div id="mensagem-endereco" class="text-center col-12"></div> 
                                                 </div>
                                             </div>
-                                            <div class="modal-footer"> 
+                                            <div class="modal-footer">
                                                 <label class="pr-4">
-                                                    <input type="checkbox" checked="checked" name="sameadr" required> Deseja realmente alterar seus dados?
+                                                    <input type="checkbox" name="confirmar" id="confirmar" required> Deseja realmente alterar seus dados?
                                                 </label>
+                                                <input value="<?php echo @$nome_usu ?>" type="hidden" name="nome-e" id="nome-e">
+                                                <input value="<?php echo @$sobrenome_usu ?>" type="hidden" name="sobrenome-e" id="sobrenome-e">
+                                                <input value="<?php echo @$cpf_usu?>" type="hidden" name="cpf-e" id="cpf-e">
+                                                <input value="<?php echo @$email_usu?>" type="hidden" name="email-e" id="email-e">
+                                                <input value="<?php echo @$telefone_usu ?>" type="hidden" name="telefone-e" id="telefone-e">
                                                 <input value="<?php echo $_SESSION['id_usuario'] ?>" type="hidden" name="txtid" id="txtid"> 
                                                 <input value="<?php echo $_SESSION['cpf_usuario'] ?>" type="hidden" name="antigo" id="antigo"> 
                                                 <button type="submit" name="btn-salvar-endereco" id="btn-salvar-endereco" class="btn btn-dark">Salvar</button> 
@@ -192,7 +197,6 @@ $estado = $dados[0]['estado'];
                                     <div class="modal-content">
                                         <div class="pb-3 pt-3 ">
                                             <h4 class="text-center" id="exampleModalLabel">Editar Email/Senha</h4>
-                                            <div id="mensagem-senha" class="mr-4"></div>
                                         </div>
                                         <form id="form-senha" method="POST">
                                             <div class="modal-body">
@@ -202,22 +206,24 @@ $estado = $dados[0]['estado'];
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="d-block">Senha</label> 
-                                                            <input type="password" class="form-control d-inline-block" id="senha" name="senha" placeholder="Senha" required> 
+                                                            <input type="password" class="form-control d-inline-block" id="senha" name="senha" placeholder="Senha"  minlength="8" required> 
                                                             <button class="d-inline-block form-control" type="button" onClick="mostrarSenha()"><i class="fa fa-eye"></i></button> 
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="d-block">Confirmar Senha</label>
-                                                            <input value="" type="password" class="form-control d-inline-block" id="conf-senha" name="conf-senha" placeholder="Senha" required> 
+                                                            <input value="" type="password" class="form-control d-inline-block" id="conf-senha" name="conf-senha" placeholder="Senha"  minlength="8" required > 
                                                             <button class="d-inline-block form-control" type="button" onClick="mostrarConfSenha()"><i class="fa fa-eye"></i></button> 
                                                         </div>
                                                     </div>
+                                                    <div id="mensagem-senha" class="text-center col-12"></div>
                                                 </div>
                                             </div>
                                             <div class="modal-footer"> 
+                        
                                                 <label class="pr-4">
-                                                    <input type="checkbox" checked="checked" name="sameadr" required> Deseja realmente alterar seus dados?
+                                                    <input type="checkbox" name="sameadr" required> Deseja realmente alterar seus dados?
                                                 </label>
                                                 <input value="<?php echo $_SESSION['id_usuario'] ?>" type="hidden" name="txtid" id="txtid"> 
                                                 <input value="<?php echo $_SESSION['cpf_usuario'] ?>" type="hidden" name="antigo" id="antigo">  

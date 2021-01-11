@@ -1,24 +1,35 @@
 <?php
-require_once("../../conexao.php"); 
+require_once("../../conexao.php");
 
-$id_usuario = $_POST['txtid'];
-$rua = $_POST['rua'];
-$numero = $_POST['numero'];
-$bairro = $_POST['bairro'];
-$complemento = $_POST['complemento'];
-$cep = $_POST['cep'];
-$cidade = $_POST['cidade'];
-$estado = $_POST['estado'];
 
-$res = $pdo->prepare("UPDATE rua = :rua, numero = :numero, complemento = :complemento, bairro = :bairro, cidade = :cidade, estado = :estado, cep = :cep WHERE id = :id");
-$res->bindValue(":rua", $rua);
-$res->bindValue(":numero", $numero);
-$res->bindValue(":bairro", $bairro);
-$res->bindValue(":cidado", $cidade);
-$res->bindValue(":complemento", $complemento);
-$res->bindValue(":estado", $estado);
-$res->bindValue(":cep", $cep);
-$res->bindValue(":id", $id_usuario);
+$nome =  $_POST['nome-e'];
+$sobrenome =  $_POST['sobrenome-e'];
+$cpf =  $_POST['cpf-e'];
+$email =  $_POST['email-e'];
+$telefone =  $_POST['telefone-e'];
+
+$antigo_E = $_POST['antigo'];
+$rua_E = $_POST['rua'];
+$numero_E = $_POST['numero'];
+$bairro_E = $_POST['bairro'];
+$complemento_E = $_POST['complemento'];
+$cep_E = $_POST['cep'];
+$cidade_E = $_POST['cidade'];
+$estado_E = $_POST['estado'];
+
+$res = $pdo->prepare("UPDATE clientes SET nome = :nome, sobrenome = :sobrenome, cpf = :cpf, email = :email, telefone = :telefone, rua = :rua, numero = :numero, complemento = :complemento, bairro = :bairro, cidade = :cidade, estado = :estado, cep = :cep where cpf = '$antigo_E' ");
+$res->bindValue(":nome", $nome);
+$res->bindValue(":sobrenome", $sobrenome);
+$res->bindValue(":email", $email);
+$res->bindValue(":cpf", $cpf);
+$res->bindValue(":telefone", $telefone);
+$res->bindValue(":rua", $rua_E);
+$res->bindValue(":numero", $numero_E);
+$res->bindValue(":complemento", $complemento_E);
+$res->bindValue(":bairro", $bairro_E);
+$res->bindValue(":cidade", $cidade_E);
+$res->bindValue(":estado", $estado_E);
+$res->bindValue(":cep", $cep_E);
 
 $res->execute();
 

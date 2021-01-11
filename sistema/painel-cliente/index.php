@@ -230,8 +230,8 @@ $total_item = $valor * $quantidade;
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__right">
                             <div class="header__top__right__social">
-                                <a target="_blank" title="Ir para página do Facebook" href="#"><i class="fa fa-facebook"></i></a>
-                                <a target="_blank" href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="https://www.facebook.com/webpassos2020" target="blank" rel="noopener noreferrer" title="Ir para página do Facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="https://www.instagram.com/webpassos_/" target="blank" rel="noopener noreferrer"><i class="fa fa-instagram"></i></a>
                                 <a target="_blank" href="https://api.whatsapp.com/send?1=pt_BR&phone=<?php echo $whatsapp_link ?>" title="<?php echo $whatsapp ?>"><i class="fa fa-whatsapp text-success"></i></a>
                             </div>
                             
@@ -425,7 +425,7 @@ require_once("modal-carrinho.php");
         $.ajax({
             url:"editar-dados.php",
             method:"post",
-            data: {nome: nome, sobrenome: sobrenome, email: email, telefone: telefone, cpf: cpf, id_usuario = txtid},
+            data:  $('form').serialize(),
             dataType: "text",
             success: function(msg){
                 if(msg.trim() === 'Salvo com Sucesso!'){  
@@ -450,7 +450,7 @@ require_once("modal-carrinho.php");
             dataType: "text",
             success: function(msg){
                 if(msg.trim() === 'Salvo com Sucesso!'){                 
-                    $('#mensagem-endereco').addClass('text-sucess')
+                    $('#mensagem-endereco').addClass('text-success')
                     $('#mensagem-endereco').text(msg);;
                 } else {
                     $('#mensagem-endereco').addClass('text-danger')
@@ -471,7 +471,7 @@ require_once("modal-carrinho.php");
             dataType: "text",
             success: function(msg){
                 if(msg.trim() === 'Salvo com Sucesso!'){                 
-                    $('#mensagem-senha').addClass('text-sucess')
+                    $('#mensagem-senha').addClass('text-success')
                     $('#mensagem-senha').text(msg);;
                 } else {
                     $('#mensagem-senha').addClass('text-danger')

@@ -209,8 +209,8 @@ $nome_usu = @$dados[0]['nome'];
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__right">
                             <div class="header__top__right__social">
-                                <a target="_blank" title="Ir para página do Facebook" href="#"><i class="fa fa-facebook"></i></a>
-                                <a target="_blank" href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="https://www.facebook.com/webpassos2020" target="blank" rel="noopener noreferrer" title="Ir para página do Facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="https://www.instagram.com/webpassos_/" target="blank" rel="noopener noreferrer"><i class="fa fa-instagram"></i></a>
                                 <a target="_blank" href="https://api.whatsapp.com/send?1=pt_BR&phone=<?php echo $whatsapp_link ?>" title="<?php echo $whatsapp ?>"><i class="fa fa-whatsapp text-success"></i></a>
                             </div>
 
@@ -276,7 +276,7 @@ $nome_usu = @$dados[0]['nome'];
                                 <li class="active"><a href="./index.php">Início</a></li>
                                 <li><a href="#">Produtos</a>
                                     <ul class="header__menu__dropdown">
-                                        <li><a href="produtos.php">Produtos</a></li>
+                                        <li><a href="produtos.php">Todos Produtos</a></li>
                                         <li><a href="lista-produtos.php">Lista de Produtos</a></li>
                                         <li><a href="sub-categorias.php">Sub Categorias</a></li>
                                         <li><a href="promocoes.php">Promoções</a></li>

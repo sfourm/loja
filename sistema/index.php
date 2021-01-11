@@ -1,13 +1,14 @@
 <?php
-    require_once("../conexao.php");
+   require_once("../conexao.php");
+   @session_start();
 
-    //VERIFICAR SE EXISTE ALGUM CADASTRO NO BANCO, SE NÃO TIVER CADASTRAR O USUÁRIO ADMINISTRADOR
-    $res = $pdo->query("SELECT * FROM usuarios"); 
-    $dados = $res->fetchAll(PDO::FETCH_ASSOC);
-    $senha_crip = md5('123');
-    if(@count($dados) == 0){
-      $res = $pdo->query("INSERT into usuarios (nome, cpf, email, senha, senha_crip, nivel, imagem) values ('Administrador', '000.000.000-00', '$email', '123', '$senha_crip', 'Admin', 'sem-foto.jpg')");
-    }
+   //VERIFICAR SE EXISTE ALGUM CADASTRO NO BANCO, SE NÃO TIVER CADASTRAR O USUÁRIO ADMINISTRADOR
+   $res = $pdo->query("SELECT * FROM usuarios"); 
+   $dados = $res->fetchAll(PDO::FETCH_ASSOC);
+   $senha_crip = md5('123');
+   if(@count($dados) == 0){
+   $res = $pdo->query("INSERT into usuarios (nome, cpf, email, senha, senha_crip, nivel, imagem) values ('Administrador', '000.000.000-00', '$email', '123', '$senha_crip', 'Admin', 'sem-foto.jpg')");
+   }
 
 ?>
 
@@ -44,16 +45,26 @@
                         <div class="col-md-12 text-center pb-3">
                            <a href="../index.php"><img src="../img/logo.png" alt=""></a>
                         </div>
+                        <?php
+                        if(isset($_SESSION['dados_incorretos'])):
+                        ?>
+                        <div class="">
+                        <p class="text-center">ERRO: Usuário ou senha inválidos.</p>
+                        </div>
+                        <?php
+                        endif;
+                        unset($_SESSION['dados_incorretos']);
+                        ?>
                      </div>
-                     <form action="autenticar.php" method="post" name="login">
+                     <form action="autenticar.php" method="post" name="form-login" id="form-login">
                         <div class="form-group">
-                           <label for="exampleInputEmail1">Email ou CPF</label>
-                           <input type="text" name="email_login"  class="form-control" id="email_login" aria-describedby="emailHelp" placeholder="Insira seu Email ou CPF">
+                           <label>Email ou CPF</label>
+                           <input type="text" name="email_login"  class="form-control" id="email_login" aria-describedby="emailHelp" placeholder="Insira seu Email ou CPF" required>
                         </div>
                      
                         <div class="form-group">
-                           <label for="exampleInputEmail1" class="d-block">Senha</label>
-                           <input type="password" class="form-control d-inline-block" id="senha_login" name="senha_login" placeholder="Inserir Senha">
+                           <label class="d-block">Senha</label>
+                           <input type="password" class="form-control d-inline-block" id="senha_login" name="senha_login" placeholder="Inserir Senha" maxlength="16" required>
                            <button class="d-inline-block form-control" type="button" onClick="mostrarSenhaLogin()"><i class="fa fa-eye"></i></button>
                         </div>
                      
@@ -85,38 +96,38 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
          </div>
          <div class="modal-body">
-            <form method="post">
+            <form method="post" id="form-cadastrar" name="form-cadastrar">
                <div class="row">
                   <div class="col-md-6">
                      <div class="form-group">
-                        <label for="exampleInputEmail1">Nome</label>
+                        <label >Nome</label>
                         <input type="text" class="form-control text-capitalize" id="nome" name="nome" placeholder="Nome" required>
                      </div>
                   </div>
 
                   <div class="col-md-6">
                      <div class="form-group">
-                        <label for="exampleInputEmail1">Sobrenome</label>
-                        <input type="text" class="form-control text-capitalize" id="sobrenome" name="sobrenome" placeholder="Sobrenome" >
+                        <label>Sobrenome</label>
+                        <input type="text" class="form-control text-capitalize" id="sobrenome" name="sobrenome" placeholder="Sobrenome" required>
                      </div>
                   </div>
                </div>
 
                <div class="form-group">
-                  <label for="exampleInputEmail1">Email</label>
+                  <label >Email</label>
                   <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
                </div>
                <div class="row">
                   <div class="col-md-6">
                      <div class="form-group">
-                        <label for="exampleInputEmail1">Telefone</label>
+                        <label>Telefone</label>
                         <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone" required>
                      </div>
                   </div>
 
                   <div class="col-md-6">
                      <div class="form-group">
-                        <label for="exampleInputEmail1">CPF</label>
+                        <label >CPF</label>
                         <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF" required>
                      </div>
                   </div>
@@ -125,24 +136,23 @@
                <div class="row">
                   <div class="col-md-6">
                      <div class="form-group d-inline">
-                        <label for="exampleInputEmail1" class="d-block">Senha</label>
-                        <input type="password" class="form-control d-inline-block" id="senha" name="senha" placeholder="Inserir Senha" required >
+                        <label  class="d-block">Senha</label>
+                        <input  type="password" class="form-control d-inline-block" id="senha" name="senha" placeholder="Inserir Senha" for="senha" minlength="8" maxlength="16" required>
                         <button class="d-inline-block form-control" type="button" onClick="mostrarSenha()"><i class="fa fa-eye"></i></button>
                      </div>
                   </div>
 
                   <div class="col-md-6">
                      <div class="form-group d-inline">
-                        <label for="exampleInputEmail1" class="d-block">Confirmar Senha</label>
-                        <input type="password" class="form-control d-inline-block" id="confirmar-senha" name="confirmar-senha" placeholder="Confirmar Senha" required>
+                        <label class="d-block">Confirmar Senha</label>
+                        <input type="password" class="form-control d-inline-block" id="confirmar-senha" name="confirmar-senha" minlength="8" maxlength="16" placeholder="Confirmar Senha" required>
                         <button class="d-inline-block form-control" type="button" onClick="mostrarConfSenha()"><i class="fa fa-eye"></i></button>
                      </div>
                   </div>
                </div>
                <small><div class="text-center" id="div-mensagem"></div></small>
                <div class="modal-footer text-center align-content-center d-flex">
-                  <button type="button" id="btn-fechar-cadastrar" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                  <button type="button" id="btn-cadastrar" class="btn btn-dark">Cadastrar</button>
+                  <button type="submit" id="btn-cadastrar" class="btn btn-dark">Cadastrar</button>
                </div>
             </form>
          </div>
@@ -162,7 +172,7 @@
          <div class="modal-body">
             <form method="post">
                <div class="form-group">
-                  <label for="exampleInputEmail1">Email</label>
+                  <label>Email</label>
                   <input type="email" class="form-control" id="email-recuperar" name="email-recuperar" placeholder="Seu Email">
                </div>
 
@@ -186,7 +196,7 @@ if (@$_GET["email_rodape"] != null) {
 ?>
 
 <script type="text/javascript">
-   $('#btn-cadastrar').click(function(event){
+   $('#form-cadastrar').submit(function(event){
       event.preventDefault();
       $.ajax({
          url:"cadastrar.php",
@@ -195,13 +205,11 @@ if (@$_GET["email_rodape"] != null) {
          dataType: "text",
          success: function(msg){
             if(msg.trim() === 'Cadastrado com Sucesso!'){
+               $('#div-mensagem').removeClass('text-danger')
                $('#div-mensagem').addClass('text-success')
                $('#div-mensagem').text(msg);
-               $('#btn-fechar-cadastrar').click();
-               $('#email').val(document.getElementById('email').value);
-               $('#senha').val(document.getElementById('senha').value);
-                  }
-            else{
+            
+            } else {
                $('#div-mensagem').addClass('text-danger')
                $('#div-mensagem').text(msg);
 
@@ -239,7 +247,7 @@ if (@$_GET["email_rodape"] != null) {
    })
 </script>
 
-<script>                        
+<script type="text/javascript">                        
 function mostrarConfSenha() {
   var senha = document.getElementById("confirmar-senha");
   if (senha.type === "password") {
@@ -250,7 +258,7 @@ function mostrarConfSenha() {
 }
 </script>
 
-<script>                        
+<script type="text/javascript">                        
 function mostrarSenha() {
   var senha = document.getElementById("senha");
   if (senha.type === "password") {
@@ -261,7 +269,7 @@ function mostrarSenha() {
 }
 </script>
 
-<script>                        
+<script type="text/javascript">                        
 function mostrarSenhaLogin() {
   var senha = document.getElementById("senha_login");
   if (senha.type === "password") {

@@ -46,7 +46,7 @@ require_once("conexao.php");
             </div>
           </div>
         </div>
-        <div class="hero__item set-bg bg-light" data-setbg="img/hero/banner.jpg">
+        <div class="hero__item hero__item__bg" style="background-image: url('img/hero/banner.jpg'); max-width: 100%">
           <div class="hero__text">
             <span><?php echo strToUpper($nome_loja) ?></span>
             <h2>Sites e<br />Sistemas</h2>

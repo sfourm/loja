@@ -1,10 +1,8 @@
 
-
 <!-- Modal -->
 <div class="modal fade" id="modalCarrinho" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document" style="overflow-y: initial !important">
-    <div class="modal-content mb-4" style="height: 540px;
-    overflow-y: auto;">
+    <div class="modal-content mb-4" style="overflow-y: auto; overflow-x: hidden">
       <div class="modal-header">
         <h5 class="cart-inline-title">Carrinho:<span id="total_itens" class="ml-1"> </span> Produto(s)</h5>
         <input type="hidden" id="txtquantidade">
@@ -24,13 +22,13 @@
           <small><div class="text-center" id="mensagem"></div></small>
         </div>
 
-        <div class="row p-3">
+        <div class="row pr-5 pl-5">
           <div class="col-md-6">
-            <h5>Total:R$ <span id="valor_total" class="ml-1"> </span></h5>
+            <h4>Total: R$ <span id="valor_total" class="ml-1"> </span></h4>
           </div>
 
           <div class="col-md-6 mb-4 text-right">
-            <a type="button" id="btn-comprar" class="bg-secondary text-light primary-btn btn-sm" data-dismiss="modal">Comprar +</a>
+            <a type="button" id="btn-comprar"  class="bg-secondary text-light primary-btn btn-sm" data-dismiss="modal">Comprar mais</a>
             <a href="" onclick="finalizarPedido()" type="submit" name="btn-finalizar" id="btn-finalizar" class="primary-btn btn-dark bg-dark btn-sm">Finalizar</a>
           </div>
         </div>

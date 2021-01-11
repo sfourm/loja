@@ -9,36 +9,6 @@ $telefoneC = $_POST['telefone'];
 $senha = $_POST['senha'];
 $senha_crip = md5($senha);
 
-if($nome == ""){
-	echo 'Preencha o Campo Nome!';
-	exit();
-}
-
-if($sobrenome == ""){
-	echo 'Preencha o Campo Sobrenome!';
-	exit();
-}
-
-if($email == ""){
-	echo 'Preencha o Campo Email!';
-	exit();
-}
-
-if($cpf == ""){
-	echo 'Preencha o Campo CPF!';
-	exit();
-}
-
-if($telefoneC == ""){
-	echo 'Preencha o Campo Telefone!';
-	exit();
-}
-
-if($senha == ""){
-	echo 'Preencha o Campo senha!';
-	exit();
-}
-
 if($senha != $_POST['confirmar-senha']){
 	echo 'As senhas não coincidem!';
 	exit();
@@ -47,7 +17,7 @@ if($senha != $_POST['confirmar-senha']){
 $cpfbd = $pdo->query("SELECT * FROM usuarios where cpf = '$_POST[cpf]'");
 $emailbd = $pdo->query("SELECT * FROM usuarios where email = '$_POST[email]'"); 
 $telefonebd = $pdo->query("SELECT * FROM usuarios where telefone = '$_POST[telefone]'"); 
-$dados = $cpfbd->fetchAll(PDO::FETCH_ASSOC);
+$dadoscpf = $cpfbd->fetchAll(PDO::FETCH_ASSOC);
 $dadosemail = $emailbd->fetchAll(PDO::FETCH_ASSOC);
 $dadostelefone = $telefonebd->fetchAll(PDO::FETCH_ASSOC);
 if(@count($dadoscpf) == 1){

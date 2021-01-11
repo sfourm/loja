@@ -15,15 +15,16 @@
     	$_SESSION['cpf_usuario'] = $dados[0]['cpf'];
     	$_SESSION['nivel_usuario'] = $dados[0]['nivel'];
     	if($_SESSION['nivel_usuario'] == 'Admin'){
-    		echo "<script language='javascript'> window.location='painel-admin' </script>";
+			header("location: painel-admin/index.php");
     	}
 
     	if($_SESSION['nivel_usuario'] == 'Cliente'){
-    		echo "<script language='javascript'> window.location='../' </script>";
+    		header("location: painel-cliente/index.php");
 		}
 		
-    }else{
-    	echo "<script language='javascript'> window.alert('Dados Incorretos!') </script>";
-    	echo "<script language='javascript'> window.location='index.php' </script>";
+    } else {
+		$_SESSION['dados_incorretos'] = true;
+		header('Location: index.php');
+		exit();
     }
 ?>

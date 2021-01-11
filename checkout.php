@@ -432,10 +432,6 @@ require_once("rodape.php");
     })
 </script>
 
-
-
-
-
 <script type="text/javascript">
     $('#btn-finalizar').click(function(event){
         event.preventDefault();

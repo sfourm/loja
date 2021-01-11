@@ -49,31 +49,35 @@
     <div class="contact-form spad bg-light">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="contact__form__title">
-                        <h2>Contate-nos</h2>
+                <div class="col-12">
+                    <div class="col-lg-12">
+                        <div class="contact__form__title">
+                            <h2>Contate-nos</h2>
+                        </div>
                     </div>
                 </div>
+                <div class="col-lg-2"></div>
+                <form class="col-lg-8 col-md-12 justify-content-center" method="post">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4">
+                            <input type="text" name="nome" id="nome" placeholder="Seu Nome">
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <input type="text" name="email" id="email" placeholder="Seu Email">
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <input type="text" name="telefone" id="telefone" placeholder="Seu Whatsapp">
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            <textarea name="mensagem" id="mensagem" placeholder="Sua Mensagem"></textarea>
+                            <button name="btn-enviar-email" id="btn-enviar-email" type="button" class="site-btn">Enviar</button>
+                        </div>
+                        
+                        <div class="col-md-12 text-center mt-3 text-info" id="div-mensagem"></div>
+                    </div>
+                </form>
+                <div class="col-lg-2"></div>
             </div>
-            <form method="post">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4">
-                        <input type="text" name="nome" id="nome" placeholder="Seu Nome">
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <input type="text" name="email" id="email" placeholder="Seu Email">
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <input type="text" name="telefone" id="telefone" placeholder="Seu Whatsapp">
-                    </div>
-                    <div class="col-lg-12 text-center">
-                        <textarea name="mensagem" id="mensagem" placeholder="Sua Mensagem"></textarea>
-                        <button name="btn-enviar-email" id="btn-enviar-email" type="button" class="site-btn">Enviar</button>
-                    </div>
-                    
-                    <div class="col-md-12 text-center mt-3 text-info" id="div-mensagem"></div>
-                </div>
-            </form>
         </div>
     </div>
     <!-- Contact Form End -->
