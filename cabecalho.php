@@ -100,6 +100,10 @@ $nome_usu = @$dados[0]['nome'];
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <!--
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css"> 
+    -->
 </head>
 
 <body>
@@ -237,9 +241,7 @@ $nome_usu = @$dados[0]['nome'];
                                                                 <i class="fa fa-user fa-sm fa-fw mr-2 text-primary"></i>Editar Perfil
                                                             </a>
                                                         </li>
-                                                        
-                                                        
-                                                        
+                                                    
                                                         <li>
                                                             <a href="sistema/painel-cliente/index.php?pag=<?php echo $menu1 ?>">
                                                                 <i class="fa fa-area-chart fa-fw "></i>

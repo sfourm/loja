@@ -14,7 +14,7 @@ $url_loja = 'https://loja.webpassos.com.br';
 $servidor = 'localhost';
 $usuario = 'root';
 $senha = '';
-$banco = 'loja';
+$banco = 'webpassosloja';
 
 //VARIAVEIS DO SITE
 $itens_por_pagina = 6;

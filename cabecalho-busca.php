@@ -11,7 +11,7 @@ require_once("conexao.php");
                             <i class="fa fa-bars"></i>
                             <span>Categorias</span>
                         </div>
-                        <ul>
+                        <ul>;
                             <?php 
                                 $query = $pdo->query("SELECT * FROM categorias order by nome asc ");
                                 $res = $query->fetchAll(PDO::FETCH_ASSOC);
