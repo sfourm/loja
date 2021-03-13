@@ -30,8 +30,7 @@ html,
 body {
 	height: 100%;
 	font-family: "Cairo", sans-serif;
-	-webkit-font-smoothing: antialiased;
-	font-smoothing: antialiased;}
+	-webkit-font-smoothing: antialiased;}
 	
 .wrapper {
 	position: relative;
@@ -2656,7 +2655,7 @@ body > section.contact.spad.bg-light > div > div > div:nth-child(2) > div > span
 		text-align: center;
 		padding: 10px 0 24px;
 	}	.over_hid {
-		overflow: hidden;
+		overflow: hidden px;
 	}}
 /* Small Device = 320px */
 
